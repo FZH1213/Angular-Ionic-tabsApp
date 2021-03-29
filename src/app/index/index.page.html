@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar style="margin-top: 15px">
+    <img
+      src="../../assets/images/logo.jpg"
+      alt=""
+      slot="start"
+      style="margin-left: 10px; width: 35px; border-radius: 5px"
+    />
+    <ion-searchbar placeholder="查询更多好物..."></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="res">
+  <ion-slides pager [options]="{autoplay:{disableOnInteraction:false},loop:true}">
+    <ion-slide *ngFor="let item of res.carouselItems">
+      <img [src]="'http://101.96.128.94:9999/'+item.img" alt="" style="padding: 10px;" [routerLink]="['/tabs/detail',{href:item.href}]" />
+    </ion-slide>
+  </ion-slides>
+
+  <ion-item style="padding-right:15px;margin-top:20px">
+    <ion-icon name="desktop-outline"></ion-icon>
+    <ion-label style="margin-left: 10px;">首页推荐</ion-label>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of res.recommendedItems">
+        <ion-card style="margin: 0; padding: 5px;">
+          <img [src]="'http://101.96.128.94:9999/'+item.pic" alt="" width="100%">
+          <div style="margin-left: 10px;">
+            <p style="font-size: 1.3em;margin: 6px 0;">{{item.title}}</p>
+            <p style="margin: 6px 0;">{{item.details}}</p>
+            <p style="font-size: 1.3em;margin: 6px 0; color:#00a1eb">￥ {{item.price}}</p>
+            <ion-button expand="block"  [routerLink]="['/tabs/detail',{href:item.href}]">查看详情</ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item style="padding-right:15px;margin-top:20px">
+    <ion-icon name="rocket-outline"></ion-icon>
+    <ion-label style="margin-left: 10px;">最新上架</ion-label>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of res.newArrivalItems">
+        <ion-card style="margin: 0; padding: 5px;">
+          <img [src]="'http://101.96.128.94:9999/'+item.pic" alt="" width="100%">
+          <div style="margin-left: 10px;">
+            <p style="font-size: 1.3em;margin: 6px 0;">{{item.title}}</p>
+            <p style="margin: 6px 0;">{{item.details}}</p>
+            <p style="font-size: 1.3em;margin: 6px 0; color:#00a1eb">￥ {{item.price}}</p>
+            <ion-button expand="block"  [routerLink]="['/tabs/detail',{href:item.href,pid:item.pid}]">查看详情</ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row class="ion-padding">
+      <ion-col size="3" *ngFor="let item of footIcon" style="display: flex;justify-content: space-evenly;font-size: 2em;">
+        <img [src]="'../../assets/icon/icon'+item+'.png'" alt="" width="50%">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

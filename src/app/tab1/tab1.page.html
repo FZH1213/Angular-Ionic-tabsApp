@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>页面跳转传参</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-button expand="block" routerLink="/detail">
+    跳转至detail页面
+  </ion-button>
+  <ion-button expand="block" [routerLink]="['/detail',{name:'fuzhihui1',age:25}]">
+    跳转至参数fuzhihui1页面
+  </ion-button>
+  <ion-button expand="block" [routerLink]="['/detail',{name:'fuzhihui2',age:26}]">
+    跳转至参数fuzhihui2页面
+  </ion-button>
+  <ion-button expand="block" (click)="goDetail()">
+    编程式跳转传参
+  </ion-button>
+</ion-content>

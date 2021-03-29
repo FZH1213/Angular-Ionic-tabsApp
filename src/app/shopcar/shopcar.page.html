@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-nav-link slot="start" color="light" (click)="router.back()"><ion-icon name="chevron-back-outline"></ion-icon></ion-nav-link>
+    <ion-title>购物车</ion-title>
+    <ion-button slot="end" fill="clear" color="medium">
+      <ion-icon name="cart"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="res">
+    <ion-item *ngFor="let item of res.products">
+      <ion-label>{{item.title1}}</ion-label>
+      <ion-label>￥{{item.price}}</ion-label>
+      <ion-button expand="block" fill="clear">-</ion-button>
+      <ion-text color="primary">
+        {{item.count}}
+      </ion-text>
+      <ion-button expand="block" fill="clear">+</ion-button>
+    </ion-item>
+  </ion-card>
+  <ion-label style="justify-content: center;">你的购物车空空如也...</ion-label>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>商城-个人中心</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card style="padding:10px">
+    <ion-item style="margin-left: -20px;">
+      <ion-label>用户名：</ion-label>
+      <ion-input [(ngModel)]="uname"></ion-input>
+    </ion-item>
+    <ion-item style="margin: 0 0 10px -20px; ">
+      <ion-label>密&nbsp;&nbsp;&nbsp;码：</ion-label>
+      <ion-input type="password" [(ngModel)]="upwd"></ion-input>
+    </ion-item>
+  </ion-card>
+  <ion-button expand="block" (click)="doLogin()">登录</ion-button>
+  <h5>其他登录方式</h5>
+  <div style="margin:auto;">
+    <ion-button><ion-icon name="logo-alipay"></ion-icon></ion-button>
+    <ion-button><ion-icon name="logo-facebook"></ion-icon></ion-button>
+    <ion-button><ion-icon name="logo-wechat"></ion-icon></ion-button>
+    <ion-button><ion-icon name="logo-twitter"></ion-icon></ion-button>
+    <ion-button><ion-icon name="logo-twitter"></ion-icon></ion-button>
+  </div>
+  
+</ion-content>

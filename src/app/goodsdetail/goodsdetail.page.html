@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-nav-link slot="start" color="light" (click)="router.back()"><ion-icon name="chevron-back-outline"></ion-icon></ion-nav-link>
+    <ion-title>商品详情</ion-title>
+    <ion-button slot="end" fill="clear" color="medium">
+      <ion-icon name="cart"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="res">
+  <ion-slides pager [options]="{loop:true,autoplay:{disableOnInteraction:false}} ">
+    <ion-slide *ngFor="let item of res.details.picList">
+      <img [src]="'http://101.96.128.94:9999/'+item.lg" alt="">
+    </ion-slide>
+  </ion-slides>
+  <div style="margin: 10px;">
+    <div>{{res.details.title}}</div>
+    <div style="font-size: 0.7em;">{{res.details.subtitle}}</div>
+  </div>
+  <ion-item>
+    <span style="color: #00a1eb;font-size: 1.2em;">￥ {{res.details.price}}</span>
+    <ion-button style="margin-left:auto;" slot="end">加入购物车<ion-icon name="cart"></ion-icon></ion-button>
+  </ion-item>
+  <div style="margin:20px 15px 0 0;">
+    <ion-item>CPU：{{res.details.cpu}}</ion-item>
+    <ion-item>内存：{{res.details.memory}}</ion-item>
+    <ion-item>系统：{{res.details.os}}</ion-item>
+    <ion-item>硬盘：{{res.details.disk}}</ion-item>
+    <ion-item>承诺：{{res.details.promise}}</ion-item>
+    <ion-item>显卡：{{res.details.video_card}}</ion-item>
+    <ion-item>显存：{{res.details.video_memory}}</ion-item>
+    <ion-item>上市时间：{{res.details.shelf_time|date:"yyyy-MM-dd"}}</ion-item>
+  </div>
+  <div [innerHTML]="changeHtml(res.details.details)"></div>
+  
+</ion-content>

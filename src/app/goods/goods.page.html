@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar style="margin-top: 15px">
+    <img
+      src="../../assets/images/logo.jpg"
+      alt=""
+      slot="start"
+      style="margin-left: 10px; width: 35px; border-radius: 5px"
+    />
+    <ion-searchbar placeholder="查询更多好物..."></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="res">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-item button detail *ngFor="let item of res.data"  [routerLink]="['/tabs/goodsdetail',{lid:item.lid}]">
+    <img [src]="'http://101.96.128.94:9999/'+item.pic" alt="" style="width: 80px;">
+    <ion-label>
+      <ion-label>{{item.title}}</ion-label>
+      <span style="color: #00a1eb;">￥{{item.price}}</span>
+    </ion-label>
+  </ion-item>
+  <ion-infinite-scroll threshold="25%" [disabled]="res.pno>=res.pageCount" position="bottom" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-button *ngIf="res.pno>=res.pageCount" disabled expand="full" style="margin: 20px;">没有更多数据了...</ion-button>
+</ion-content>
